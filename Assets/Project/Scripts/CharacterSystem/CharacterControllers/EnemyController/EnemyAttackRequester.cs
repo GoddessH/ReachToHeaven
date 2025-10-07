@@ -5,6 +5,7 @@ public class EnemyAttackRequester : CharacterAttackRequester
     //
     [SerializeField] private EnemyAttackRange m_attackRange;
     [SerializeField] private HitBoxSpawner m_hitBoxSpawner;
+    [SerializeField] private AudioClip m_attackClip;
     private EnemyProduct m_enemyProduct;
 
     private RequestStateData<AttackStateContext> m_requestData = 
@@ -27,6 +28,7 @@ public class EnemyAttackRequester : CharacterAttackRequester
         m_attackRange.OnOutRange += m_stateChecker.ResetState;
 
         m_eventHandle.OnEventCallBack += () => m_hitBoxSpawner.Spawn<HitBoxProduct>(0);
+        m_eventHandle.OnEventCallBack += () => EventAudioManager.Instance.PlayEventSFX(m_attackClip);
     }
 
     #region Call in AnimationEvent

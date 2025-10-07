@@ -5,6 +5,7 @@ public class GemAbsorber : MonoBehaviour
     //
     [SerializeField] private PlayerStatManager m_statManager;
     [SerializeField] private ExpBarManager m_expBarManager;
+    [SerializeField] private AudioClip m_coinCollectClip;
     private CircleCollider2D m_collider;
 
     private void Start()
@@ -19,6 +20,9 @@ public class GemAbsorber : MonoBehaviour
 
 
     public void AbsorbGem(int expAmount)
-        => m_expBarManager.UpdateExpAmount(expAmount);
+    {
+        m_expBarManager.UpdateExpAmount(expAmount);
+        EventAudioManager.Instance.PlayEventSFX(m_coinCollectClip);
+    }
 
 }

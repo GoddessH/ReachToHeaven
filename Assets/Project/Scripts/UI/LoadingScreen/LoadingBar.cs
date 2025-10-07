@@ -21,7 +21,7 @@ public class LoadingBar : MonoBehaviour
 
     private IEnumerator LoadSceneRoutine(SceneLibrary nextSceneToLoad)
     {
-        AsyncOperation loadingOperation = SceneManager.LoadSceneAsync((int)nextSceneToLoad);
+        AsyncOperation loadingOperation = UnityEngine.SceneManagement.SceneManager.LoadSceneAsync((int)nextSceneToLoad);
 
         while(loadingOperation.progress <= .9f)
         {

@@ -29,7 +29,4 @@ public class ProjectileSpawner : Spawner
         m_addForceDirection = direction;
         m_data = data;
     }
-
-    public int GetListCount()
-        => m_productPools.Length;
 }

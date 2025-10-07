@@ -20,25 +20,24 @@ public class PortalSpawner : Spawner
     private void Start()
     {
         m_portalCount = 0;
-        m_positionRandomizer.Init(m_playerRigidbody);
+        m_positionRandomizer.Init(m_playerRigidbody.transform);
         m_onExtraSetup = SetupPortalProduct;
         SetupProductPools();
-
-        StartCoroutine(SpawnRoutine());
+        StartCoroutine(SpawnRoutine(5));
     }
-
     private void SetupPortalProduct(IProduct product)
     {
         PortalProduct portalProduct = ProductConverter.IProductToAnyType<PortalProduct>(product);
         portalProduct.Init(m_playerRigidbody, m_enemyField, m_enemyCounter.CountEnemy);
     }
 
-    private IEnumerator SpawnRoutine()
+    private IEnumerator SpawnRoutine(float delayTime)
     {
-        while(m_portalCount <= m_totalPortal)
+        yield return new WaitForSeconds(delayTime);
+        while(m_portalCount < m_totalPortal)
         {
             PortalProduct product = Spawn<PortalProduct>(0);
-            product.gameObject.transform.position = m_positionRandomizer.RandomizePosition(gameObject);
+            product.gameObject.transform.position = m_positionRandomizer.RandomizePosition();
             ++m_portalCount;
             yield return new WaitForSeconds(m_intervalRandomizer.RandomizeInterval());
         }

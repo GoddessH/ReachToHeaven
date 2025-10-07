@@ -7,10 +7,10 @@ public class NextSceneLoader : MonoBehaviour
     [Tooltip("Chose the next scene will be loaded")]
     [SerializeField] private SceneLibrary m_nextScene;
 
-    [Tooltip("Switch to LoadScene first then ")]
+    [Tooltip("Switch to LoadScene first")]
     public void LoadNextScene()
     {
         LoadingSceneData.NextSceneToLoad = m_nextScene;
-        SceneManager.LoadScene((int)SceneLibrary.LoadingScene, LoadSceneMode.Single);
+        UnityEngine.SceneManagement.SceneManager.LoadScene((int)SceneLibrary.LoadingScene, LoadSceneMode.Additive);
     }
 }

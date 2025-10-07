@@ -1,29 +1,43 @@
 using System.Collections.Generic;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class UpgradeStatManager : MonoBehaviour
 {
     //
     [SerializeField] private PlayerStatManager m_statManager;
+    [SerializeField] private InputController m_inputController;
+    [SerializeField] private AudioClip m_levelUpSFX;
+    [SerializeField] private AudioClip m_flipCardSFX;
+    [SerializeField] private AudioClip m_statUpSFX;
+    
+    
     [SerializeField] private List<UpgradeStatPanel> m_upgradeStatPanels = new List<UpgradeStatPanel>();
     [SerializeField] private List<UpgradeStat> m_upgradeStats = new List<UpgradeStat>();
+
 
     private int[] m_index = new int[3];
 
     private void OnEnable()
     {
-        Time.timeScale = 0;
+        GameManager.FreezeScreen();
+        EventAudioManager.Instance.PlayEventSFX(m_levelUpSFX);
+        m_inputController.DisableInput();
+
         SetupIndexes();
 
         for(int i = 0; i < m_index.Length; ++i)
         {
-            m_upgradeStatPanels[i].Init(m_upgradeStats[m_index[i]]);
+            m_upgradeStatPanels[i].Init(m_upgradeStats[m_index[i]], m_flipCardSFX);
             m_upgradeStatPanels[i].gameObject.SetActive(true);
         }
     }
 
     private void OnDisable()
-        => Time.timeScale = 1;
+    {
+        GameManager.UnFreezeScreen();
+        m_inputController.EnableInput();
+    }
 
     private void SetupIndexes()
     {
@@ -39,6 +53,8 @@ public class UpgradeStatManager : MonoBehaviour
 
     public void OnChooseStat(int index)
     {
+        EventAudioManager.Instance.PlayEventSFX(m_statUpSFX);
+
         UpgradeStat upgradeStat = m_upgradeStats[m_index[index]];
         m_statManager.UpgradeStat(upgradeStat.UpgradeStatSystemData, upgradeStat.AdditionType);
         gameObject.SetActive(false);

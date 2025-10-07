@@ -26,10 +26,10 @@ public class ExpBarManager : MonoBehaviour
             m_currentExp -= m_maxExp;
             ++m_currentLevel;
             m_maxExp = GetNextMaxExp(m_currentLevel);
-            m_expBarUI.UpdateUI(m_currentLevel / m_maxExp);
+            m_expBarUI.UpdateUI(m_currentLevel / m_maxExp, m_currentLevel);
+            m_upgradeManager.gameObject.SetActive(true);
         }
         else m_expBarUI.UpdateUI(m_currentExp / m_maxExp);
-        m_upgradeManager.gameObject.SetActive(true);
     }
 
     ///<summary>

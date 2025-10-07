@@ -25,12 +25,14 @@ public class MoveState : StateLogic
         if (context is MoveStateContext moveContext)
         {
             moveContext.CharacterAnimatorController.CharacterAnimator.SetBool("isMove", false);
+            moveContext.CompleteEvent?.Invoke();
             moveContext.RoutineCaller.StopAllCoroutines();
         }
     }
 
     private IEnumerator MoveRoutine(MoveStateContext moveContext)
     {
+        moveContext.EnterEvent?.Invoke();
         while(true)
         {
             moveContext.CharacterAnimatorController.

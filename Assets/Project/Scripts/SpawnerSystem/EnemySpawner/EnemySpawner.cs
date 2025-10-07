@@ -1,23 +1,28 @@
-using System;
 using System.Collections;
 using UnityEngine;
 
 public class EnemySpawner : Spawner
 {
     //
-    //[SerializeField] private int m_totalEnemy;
-    [SerializeField] private float m_spawnInterval;
 
     private PortalProduct m_portalProduct;
+    private Animator m_animator;
+    private int m_spawnCount;
 
     #region Supporter
+    [SerializeField] private CountRandomizer m_countRandomizer = new CountRandomizer(); 
     [SerializeField] private IntervalRandomizer m_intervalRandomizer = new IntervalRandomizer();
     private IndexRandomizer m_indexRandonmizer = new IndexRandomizer();
+
+    [SerializeField] private AudioPlayerSupporter m_audioPlayer = new AudioPlayerSupporter();
     #endregion
 
     private void Awake()
     {
         m_portalProduct = GetComponent<PortalProduct>();
+        m_animator = GetComponent<Animator>();
+
+        m_audioPlayer.Init(GetComponent<AudioSource>());
     }
 
     private void Start()
@@ -31,17 +36,27 @@ public class EnemySpawner : Spawner
         StartCoroutine(SpawnEnemyRoutine(1));
     }
 
+    private void OnEnable()
+    {
+        m_spawnCount = 0;
+        m_audioPlayer.PlayOneShot(0);
+    }
+
     private void SetupEnemyProduct(IProduct product)
-        => ProductConverter.IProductToAnyType<EnemyProduct>(product).
-        Init(m_portalProduct.PlayerRigidbody);
+        => ProductConverter.IProductToAnyType<EnemyProduct>(product).Init(m_portalProduct.PlayerRigidbody);
 
     private IEnumerator SpawnEnemyRoutine(int amount)
     {
-        while (true)
+        m_audioPlayer.Play(1);
+        while (m_spawnCount < m_countRandomizer.RandomizeCount())
         {
-            yield return new WaitForSeconds(m_spawnInterval);
+            yield return new WaitForSeconds(m_intervalRandomizer.RandomizeInterval());
             Spawn<EnemyProduct>(m_indexRandonmizer.GetRandomIndex());
+            ++m_spawnCount;
         }
+
+        m_animator.SetTrigger("isClose");
+        m_audioPlayer.PlayOneShot(2);
     }
 
     #region Override Spawner

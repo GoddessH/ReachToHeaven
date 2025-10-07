@@ -8,10 +8,10 @@ public class WeaponSwitcher
     private int m_weaponCount;
     public int WeaponIndex { get; private set; }
 
-    public void Init(InputController inputController, int weaponPrefabCount)
+    public void Init(InputController inputController, int totalCount)
     {
         WeaponIndex = 0;
-        m_weaponCount = weaponPrefabCount;
+        m_weaponCount = totalCount;
 
         m_inputController = inputController;
         m_inputController.SwitchWeaponAction.started += SwitchWeaponIndex;

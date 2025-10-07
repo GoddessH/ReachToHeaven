@@ -1,11 +1,12 @@
 using UnityEngine;
 
+[ExecuteInEditMode]
 public class HitBoxSpawner : Spawner
 {
     //
     [SerializeField] private CharacterStatManager m_statManager;
     [SerializeField] private float m_attackRadius;
-
+    private float m_scaledAttackRadius;
     private void Start()
     {
         SetupProductPools();
@@ -23,14 +24,10 @@ public class HitBoxSpawner : Spawner
     }
 
     #region Test
-    [SerializeField] private bool m_showRadius;
-
-    private void OnDrawGizmos()
+    private void OnDrawGizmosSelected()
     {
-        if (m_showRadius)
-        {
-            Gizmos.DrawWireSphere(gameObject.transform.position, m_attackRadius);
-        }
+        m_scaledAttackRadius = m_attackRadius * Mathf.Max(transform.lossyScale.x, transform.lossyScale.y);
+        Gizmos.DrawWireSphere(gameObject.transform.position, m_scaledAttackRadius);
     }
     #endregion
 }

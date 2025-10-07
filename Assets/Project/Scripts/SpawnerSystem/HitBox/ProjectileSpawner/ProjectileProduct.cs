@@ -27,7 +27,8 @@ public class ProjectileProduct : DamageSource
             DoDamage(collision);
 
             --m_piercing;
-            if (m_piercing <= 0) m_pool.Release(this);
+            Debug.Log(m_piercing);
+            if (m_piercing == 0) m_pool.Release(this);
         }
     }
 

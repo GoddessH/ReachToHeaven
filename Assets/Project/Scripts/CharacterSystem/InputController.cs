@@ -11,12 +11,36 @@ public class InputController : MonoBehaviour, ISubject<Action<InputAction.Callba
 
     public InputAction SwitchWeaponAction { get => m_switchWeaponAction; }
 
+
     private void Start()
     {
         m_moveAction.Enable();
         m_attackAction.Enable();
         m_switchWeaponAction.Enable();
+
+        SingletonUIManager.Instance.SettingPanel.SetInputEvent(EnableInput, DisableInput);
     }
+
+    public void EnableCursorClick()
+        => m_attackAction.Enable();
+
+    public void DisableCursorClick()
+        => m_attackAction.Disable();
+
+    public void EnableInput()
+    {
+        m_moveAction.Enable();
+        m_attackAction.Enable();
+        m_switchWeaponAction.Enable();
+    }
+
+    public void DisableInput()
+    {
+        m_moveAction.Disable();
+        m_attackAction.Disable();
+        m_switchWeaponAction.Disable();
+    }
+
 
     #region Implement ISubject
     public void Subscribe(Action<InputAction.CallbackContext> subscriber)

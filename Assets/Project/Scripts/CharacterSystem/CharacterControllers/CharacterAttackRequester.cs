@@ -25,7 +25,7 @@ public abstract class CharacterAttackRequester : MonoBehaviour, IStateRequester
         attackContext.CharacterAnimatorController = GetComponent<AnimatorController>();
 
         attackContext.RoutineCaller = this;
-        attackContext.CompleteEvent += m_stateChecker.ResetState;
+        attackContext.CompleteEvent = m_stateChecker.ResetState;
     }
 
     #region Implement IStateRequester

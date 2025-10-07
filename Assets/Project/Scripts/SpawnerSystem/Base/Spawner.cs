@@ -92,4 +92,7 @@ public abstract class Spawner : MonoBehaviour
         if (m_capacity == 0) m_capacity = 10;
         if (m_maxSize == 0) m_maxSize = 100000;
     }
+
+    public int GetListCount()
+        => m_productPrefabs.Count;
 }

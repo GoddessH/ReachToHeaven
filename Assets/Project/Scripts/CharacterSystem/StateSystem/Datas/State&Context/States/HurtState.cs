@@ -12,6 +12,7 @@ public class HurtState : StateLogic
         {
             //Debug.Log("Entered HurtState");
             hurtContext.CharacterAnimatorController.CharacterAnimator.SetBool("isHurt", true);
+            hurtContext.EnterEvent?.Invoke();
             hurtContext.RoutineCaller.
                 StartCoroutine(Invinsible(hurtContext.CharacterAnimatorController, hurtContext.CompleteEvent));
         }

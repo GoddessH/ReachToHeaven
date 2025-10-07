@@ -23,7 +23,6 @@ public class PlayerHealthUI : CharacterHealthUI
         else if (healthScale < m_cachedHealthScale) DrainHealthUI(healthScale);
 
         m_cachedHealthScale = healthScale;
-        Debug.Log($"Current: {currentHealth}\nMax:{maxHealth}");
     }
 
     private void DrainHealthUI(float healthScale)

@@ -1,5 +1,4 @@
-using System.Collections;
-using Unity.VisualScripting;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -7,7 +6,8 @@ using UnityEngine.InputSystem;
 public class PlayerAttackRequester : CharacterAttackRequester
 {
     //
-    [SerializeField] private ProjectileSpawner m_spawner;
+    [SerializeField] private ProjectileSpawner m_projectileSpawner;
+    [SerializeField] private List<AudioClip> m_clips = new List<AudioClip>();
     private InputController m_inputController;
     private CharacterStatManager m_statManager;
 
@@ -36,9 +36,11 @@ public class PlayerAttackRequester : CharacterAttackRequester
 
                 m_projectileData.Damages = damages;
                 m_projectileData.Piercing = (int)m_statManager.StatDictionary[StatType.Piercing];
-                m_spawner.SetData(m_requestData.Context.Direction, m_projectileData);
+                m_projectileSpawner.SetData(m_requestData.Context.Direction, m_projectileData);
 
-                m_spawner.Spawn<ProjectileProduct>(m_weaponSwitcher.WeaponIndex);
+                m_projectileSpawner.Spawn<ProjectileProduct>(m_weaponSwitcher.WeaponIndex);
+
+                EventAudioManager.Instance.PlayEventSFX(m_clips[m_weaponSwitcher.WeaponIndex]);
             };
     }
 
@@ -47,9 +49,14 @@ public class PlayerAttackRequester : CharacterAttackRequester
         base.Start();
         SetupStaticContext();
 
-        m_weaponSwitcher.Init(m_inputController, m_spawner.GetListCount());
+        m_weaponSwitcher.Init(m_inputController, m_projectileSpawner.GetListCount());
 
         m_inputController.Subscribe(OnAttack);
+    }
+
+    private void OnDestroy()
+    {
+        m_inputController.UnSubscribe(OnAttack);
     }
 
     private void OnAttack(InputAction.CallbackContext context)

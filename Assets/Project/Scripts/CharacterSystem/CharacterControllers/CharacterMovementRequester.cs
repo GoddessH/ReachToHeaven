@@ -4,9 +4,11 @@ using UnityEngine;
 public abstract class CharacterMovementRequester : MonoBehaviour, IStateRequester
 {
     //
+    [SerializeField] protected CharacterFoot m_characterFoot;
     protected NextStateChecker m_nextStateChecker;
 
-    protected RequestStateData<MoveStateContext> m_requestData = new RequestStateData<MoveStateContext>(StateType.MoveState);
+    protected RequestStateData<MoveStateContext> m_requestData = 
+        new RequestStateData<MoveStateContext>(StateType.MoveState);
 
     ///<summary>
     ///Note: Must be assigned true value in concreteClass
@@ -17,17 +19,13 @@ public abstract class CharacterMovementRequester : MonoBehaviour, IStateRequeste
     ///Get CharacterController's reference
     /// </summary>
     protected virtual void Awake()
-    {
-        m_nextStateChecker = GetComponent<CharacterController>().StateMachine.StateChecker;
-    }
+        => m_nextStateChecker = GetComponent<CharacterController>().StateMachine.StateChecker;
 
     ///<summary>
     ///Call SetupStaticContext
     /// </summary>
     protected virtual void Start()
-    {
-        SetupStaticContext();
-    }
+        => SetupStaticContext();
 
     #region Implement IStateRequester
     ///<summary>
@@ -48,15 +46,19 @@ public abstract class CharacterMovementRequester : MonoBehaviour, IStateRequeste
     }
 
     ///<summary>
-    ///Create new context; get AnimatorController's reference, Rigidbody2D's reference; subscribe CompleteEvent; 
+    ///Create new context;
+    ///get AnimatorController's reference, Rigidbody2D's reference;
+    ///subscribe StartEvent & CompleteEvent; 
     ///assign RoutineCaller
     /// </summary>
     public virtual void SetupStaticContext()
     {
         m_requestData.Context = 
             new MoveStateContext(GetComponent<AnimatorController>(), GetComponent<Rigidbody2D>());
-        m_requestData.Context.CompleteEvent += m_nextStateChecker.ResetState;
 
+        m_requestData.Context.EnterEvent = () => m_characterFoot.PlaySFX(true);
+
+        m_requestData.Context.CompleteEvent = () => m_characterFoot.PlaySFX(false);
         m_requestData.Context.RoutineCaller = this;
     }
 

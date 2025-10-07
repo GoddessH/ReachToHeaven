@@ -1,6 +1,6 @@
 using UnityEngine;
 
-[RequireComponent(typeof(CharacterAttackRequester), typeof(CharacterHurtSensor), typeof(CharacterMovementRequester))]
+[RequireComponent(typeof(CharacterAttackRequester), typeof(CharacterHurtRequester), typeof(CharacterMovementRequester))]
 public class CharacterController : MonoBehaviour
 {
     //
