@@ -23,11 +23,13 @@ public class EnemyAttackRange : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.CompareTag("Player") 
-            && m_attackTimer.IsReadyToAttack())
+        if (collision.gameObject.CompareTag("Player"))
         {
-            OnInRange?.Invoke();
-            m_attackTimer.StartCountDown(this, m_characterStatManager.StatDictionary[StatType.AttackCountDown]);
+            if (m_attackTimer.IsReadyToAttack())
+            {
+                OnInRange?.Invoke();
+                m_attackTimer.StartCountDown(this, m_characterStatManager.StatDictionary[StatType.AttackCountDown]);
+            }
             m_cachedDetectRoutine = StartCoroutine(DetectPlayerRoutine());
         }
     }

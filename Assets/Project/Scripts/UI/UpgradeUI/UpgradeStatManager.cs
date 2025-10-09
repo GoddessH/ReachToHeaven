@@ -28,6 +28,7 @@ public class UpgradeStatManager : MonoBehaviour
 
         for(int i = 0; i < m_index.Length; ++i)
         {
+            Debug.Log(i);
             m_upgradeStatPanels[i].Init(m_upgradeStats[m_index[i]], m_flipCardSFX);
             m_upgradeStatPanels[i].gameObject.SetActive(true);
         }

@@ -4,7 +4,6 @@ using UnityEngine.Audio;
 public class EventAudioManager : Singleton<EventAudioManager>
 {
     //
-    [SerializeField] private AudioMixerGroup m_eventGroup;
     private AudioSource m_audioSource;
 
     protected override void Awake()

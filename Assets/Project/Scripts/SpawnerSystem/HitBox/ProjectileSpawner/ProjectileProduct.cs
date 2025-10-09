@@ -7,6 +7,8 @@ public class ProjectileProduct : DamageSource
     [SerializeField] private float m_baseDamages;
 
     private Rigidbody2D m_projectileRigid;
+    private Collider2D m_projectileCollider;
+
     public Rigidbody2D ProjectileRigid { get => m_projectileRigid; }
 
     public void SetData(HitBoxData data)
@@ -18,6 +20,7 @@ public class ProjectileProduct : DamageSource
     private void Awake()
     {
         m_projectileRigid = GetComponent<Rigidbody2D>();
+        m_projectileCollider = GetComponent<Collider2D>();
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -27,8 +30,16 @@ public class ProjectileProduct : DamageSource
             DoDamage(collision);
 
             --m_piercing;
-            Debug.Log(m_piercing);
-            if (m_piercing == 0) m_pool.Release(this);
+            //Debug.Log(m_piercing);
+            if (m_piercing <= 0)
+            {
+                if (m_piercing == 0) m_pool.Release(this);
+                else
+                {
+                    Physics2D.IgnoreCollision(m_projectileCollider, collision);
+                    m_pool.Release(this);
+                }
+            }
         }
     }
 

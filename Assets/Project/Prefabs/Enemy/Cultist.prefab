@@ -367,6 +367,7 @@ Transform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &4482224871572892982
 SpriteRenderer:
+  serializedVersion: 2
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -412,6 +413,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 2
+  m_MaskInteraction: 0
   m_Sprite: {fileID: -7618221830748741723, guid: 93da3c616157ab844b2ab25f0a041232,
     type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -422,7 +424,6 @@ SpriteRenderer:
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
-  m_MaskInteraction: 0
   m_SpriteSortPoint: 1
 --- !u!114 &4013709895632831144
 MonoBehaviour:
@@ -658,7 +659,7 @@ MonoBehaviour:
   - Type: 0
     Value: 0.5
   - Type: 1
-    Value: 1
+    Value: 10
   - Type: 5
     Value: 1
   CheckStateDict: 0

@@ -41,7 +41,7 @@ public class CharacterHP : MonoBehaviour, ISubject<Action>
     ///Return true if scaleAmount lower or equal currentHP / maxHP
     /// </summary>
     public bool IsHPLowerThanScale(float scaleAmount)
-        => scaleAmount <= (m_currentHP / m_maxHP);
+        => (m_currentHP / m_maxHP) <= scaleAmount;
 
     #region Implement ISubject
     public void Subscribe(Action subscriber)

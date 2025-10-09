@@ -18,5 +18,5 @@ MonoBehaviour:
     Description: Move faster 5% per level
   UpgradeStatSystemData:
     Type: 5
-    Value: 0.05
+    Value: 0.1
   AdditionType: 1

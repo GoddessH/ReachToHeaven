@@ -26,7 +26,6 @@ public class EnemyRunnableRequester : EnemyMovementRequester
                 if (m_runSFX != null)
                 {
                     m_characterFoot.AudioSource.clip = m_runSFX;
-                    Debug.Log("Called");
                 }
                 else m_characterFoot.AudioSource.pitch = 2;
             }
@@ -47,6 +46,8 @@ public class EnemyRunnableRequester : EnemyMovementRequester
         {
             m_requestData.Context.SpeedParameter = 2;
             m_requestData.Context.MovementSpeed = movementSpeed + m_extraMovementSpeed;
+
+            //Debug.Log(gameObject.name + ": " + m_requestData.Context.MovementSpeed);
         }
         else
         {

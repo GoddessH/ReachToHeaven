@@ -180,6 +180,7 @@ Transform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &7870396369557717481
 SpriteRenderer:
+  serializedVersion: 2
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -198,6 +199,8 @@ SpriteRenderer:
   m_RayTracingAccelStructBuildFlagsOverride: 0
   m_RayTracingAccelStructBuildFlags: 1
   m_SmallMeshCulling: 1
+  m_ForceMeshLod: -1
+  m_MeshLodSelectionBias: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -219,9 +222,11 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
+  m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 2
+  m_MaskInteraction: 0
   m_Sprite: {fileID: 4723107735738678597, guid: 74f415c3313deb946ad3edb6fb8596d2,
     type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -232,7 +237,6 @@ SpriteRenderer:
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
-  m_MaskInteraction: 0
   m_SpriteSortPoint: 1
 --- !u!95 &8911835294458053062
 Animator:
@@ -469,9 +473,9 @@ MonoBehaviour:
   - Type: 0
     Value: 0.5
   - Type: 1
-    Value: 1
+    Value: 11
   - Type: 5
-    Value: 1
+    Value: 0.5
   CheckStateDict: 0
 --- !u!1 &2536237222124769759
 GameObject:
@@ -939,7 +943,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: -1499332846257016661, guid: 5760377a659113d4dabec99780866cc1,
     type: 2}
-  m_audioClip: {fileID: 8300000, guid: 44baa1699d3025b4d975987837b8204a, type: 3}
+  m_audioClip: {fileID: 0}
   m_Resource: {fileID: 8300000, guid: 44baa1699d3025b4d975987837b8204a, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1

@@ -31,6 +31,8 @@ public class PlayerStatManager : CharacterStatManager
                = m_baseStats[statData.Type] + m_baseStats[statData.Type] * m_bonusStat[statData.Type] / 100;
 
         if (m_updateUIDictionary.ContainsKey(statData.Type)) m_updateUIDictionary[statData.Type]?.Invoke();
+
+        Debug.Log(statData.Type + ": " + m_finalStat[statData.Type]);
     }
 
     public void Subscribe(StatType type, Action updateEvent)

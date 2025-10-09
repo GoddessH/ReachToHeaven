@@ -10,7 +10,6 @@ public class PortalProduct : MonoBehaviour, IProduct
     public Transform EnemyField { get; private set; }
     public Rigidbody2D PlayerRigidbody { get; private set; }
 
-
     public Action OnCount;
 
     public void Init(Rigidbody2D playerRigidbody, Transform enemyProductField, Action onCount)
@@ -20,10 +19,14 @@ public class PortalProduct : MonoBehaviour, IProduct
         OnCount = onCount;
     }
 
+    public void Release()
+        => m_pool.Release(this);
+
     #region Implement IProduct
     public void SetPool(ObjectPool<IProduct> pool)
         => m_pool = pool;
     public ObjectPool<IProduct> GetPool()
         => m_pool;
     #endregion
+
 }

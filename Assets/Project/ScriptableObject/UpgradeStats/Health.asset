@@ -18,5 +18,5 @@ MonoBehaviour:
     Description: Increase maximum health by 1% per level
   UpgradeStatSystemData:
     Type: 6
-    Value: 20
+    Value: 10
   AdditionType: 1

@@ -28,6 +28,8 @@ public class UpgradeStatPanel : MonoBehaviour
         m_statData = data.UpgradeStatSystemData;
 
         m_flipCardSFX = sfxClip;
+
+        Debug.Log($"{m_statData.Type}");
     }
 
     #region Call in Button Event

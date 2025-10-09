@@ -33,13 +33,13 @@ public class EnemySpawner : Spawner
         SetupProductPools();
 
         m_indexRandonmizer.Init(m_productPrefabs.Count);
-        StartCoroutine(SpawnEnemyRoutine(1));
     }
 
     private void OnEnable()
     {
         m_spawnCount = 0;
         m_audioPlayer.PlayOneShot(0);
+        StartCoroutine(SpawnEnemyRoutine(m_countRandomizer.RandomizeCount()));
     }
 
     private void SetupEnemyProduct(IProduct product)
@@ -48,7 +48,7 @@ public class EnemySpawner : Spawner
     private IEnumerator SpawnEnemyRoutine(int amount)
     {
         m_audioPlayer.Play(1);
-        while (m_spawnCount < m_countRandomizer.RandomizeCount())
+        while (m_spawnCount < amount)
         {
             yield return new WaitForSeconds(m_intervalRandomizer.RandomizeInterval());
             Spawn<EnemyProduct>(m_indexRandonmizer.GetRandomIndex());

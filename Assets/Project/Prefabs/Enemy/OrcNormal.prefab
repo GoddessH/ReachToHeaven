@@ -299,6 +299,7 @@ Transform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &322562156727051413
 SpriteRenderer:
+  serializedVersion: 2
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -344,6 +345,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 2
+  m_MaskInteraction: 0
   m_Sprite: {fileID: 3459547899722000283, guid: e8d73d9eea46b2a47a8e88768f7359cb,
     type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -354,7 +356,6 @@ SpriteRenderer:
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
-  m_MaskInteraction: 0
   m_SpriteSortPoint: 1
 --- !u!114 &-443296186335915236
 MonoBehaviour:
@@ -530,7 +531,7 @@ MonoBehaviour:
   m_characterHP: {fileID: 494326512386390777}
   m_walkSFX: {fileID: 8300000, guid: 44baa1699d3025b4d975987837b8204a, type: 3}
   m_runSFX: {fileID: 0}
-  m_runScale: 0.5
+  m_runScale: 0.4
   m_extraMovementSpeed: 0.5
 --- !u!114 &7951478688047574104
 MonoBehaviour:
@@ -592,11 +593,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_characterStat:
   - Type: 6
-    Value: 80
+    Value: 100
   - Type: 0
-    Value: 0.5
-  - Type: 1
     Value: 1
+  - Type: 1
+    Value: 20
   - Type: 5
     Value: 0.5
   CheckStateDict: 0

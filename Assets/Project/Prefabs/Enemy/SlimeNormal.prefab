@@ -131,6 +131,7 @@ Transform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &9031217595241700029
 SpriteRenderer:
+  serializedVersion: 2
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -176,6 +177,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 2
+  m_MaskInteraction: 0
   m_Sprite: {fileID: -2087128043, guid: 3660f6b09274da44c8f164b10db9d193, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -185,7 +187,6 @@ SpriteRenderer:
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
-  m_MaskInteraction: 0
   m_SpriteSortPoint: 1
 --- !u!114 &-6852171268968658350
 MonoBehaviour:
@@ -351,8 +352,8 @@ MonoBehaviour:
   m_characterHP: {fileID: 3516373185686198212}
   m_walkSFX: {fileID: 8300000, guid: 2458ab77105a9d842a044cd7a34ce13d, type: 3}
   m_runSFX: {fileID: 0}
-  m_runScale: 0.5
-  m_extraMovementSpeed: 0.5
+  m_runScale: 0.77
+  m_extraMovementSpeed: 1
 --- !u!114 &4106028707295734659
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -413,13 +414,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_characterStat:
   - Type: 6
-    Value: 80
+    Value: 50
   - Type: 0
-    Value: 0.5
+    Value: 0.2
   - Type: 1
-    Value: 1
+    Value: 5
   - Type: 5
-    Value: 0.5
+    Value: 2
   CheckStateDict: 0
 --- !u!1 &2827287171593343667
 GameObject:
@@ -763,7 +764,7 @@ MonoBehaviour:
   m_productPrefabs:
   - {fileID: 2308313505344447715, guid: b4617953b252f9e4c8f5a8e3bc230bb2, type: 3}
   m_statManager: {fileID: 8454596746922514664}
-  m_attackRadius: 0.13
+  m_attackRadius: 0.2
 --- !u!1 &6590076822678871658
 GameObject:
   m_ObjectHideFlags: 0

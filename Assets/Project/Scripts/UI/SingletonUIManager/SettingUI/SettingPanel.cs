@@ -41,7 +41,7 @@ public class SettingPanel : MonoBehaviour
         SetPermission();
         GameManager.FreezeScreen();
         gameObject.SetActive(true);
-        Debug.Log("EnterSettingPanel");
+        //Debug.Log("EnterSettingPanel");
     }
 
     public void ExitSettingPanel()
@@ -52,7 +52,7 @@ public class SettingPanel : MonoBehaviour
         if (!m_canCursorPlaySFX) CursorController.CanPlaySFX = false;
         GameManager.UnFreezeScreen();
         gameObject.SetActive(false);
-        Debug.Log("ExitSettingPanel");
+        //Debug.Log("ExitSettingPanel");
     }
     #endregion
 }
