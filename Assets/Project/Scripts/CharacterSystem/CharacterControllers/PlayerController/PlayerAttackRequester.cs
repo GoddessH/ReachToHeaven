@@ -91,7 +91,7 @@ public class PlayerAttackRequester : CharacterAttackRequester
 
     public override void SetupDynamicContext()
     {
-        Vector2 direction = Camera.main.ScreenToWorldPoint(Input.mousePosition) - gameObject.transform.position;
+        Vector2 direction = Camera.main.ScreenToWorldPoint(Mouse.current.position.value) - gameObject.transform.position;
         m_requestData.Context.Direction = direction.normalized;
 
         m_requestData.Context.WeaponIndex = m_weaponSwitcher.WeaponIndex;

@@ -12,14 +12,16 @@ public class VolumeChanger : MonoBehaviour
     [SerializeField] private MuteButton m_muteButton;
 
     private void Start()
-        => m_muteButton.Subscribe(SetVolume);
+    {
+        m_muteButton.OnToggleOn += () => SetVolume(1);
+        m_muteButton.OnToggleOff += () => SetVolume(0);
+    }
 
     private void SetVolume(float value)
     {
         OnChangeVolume(value);
         m_audioSlider.value = value;
     }
-
 
     #region Call in Button Event
     public void OnChangeVolume(float value)
@@ -29,7 +31,7 @@ public class VolumeChanger : MonoBehaviour
             value = .00001f;
             m_muteButton.Mute();
         }
-        else if (m_muteButton.IsMute) m_muteButton.ChangeMute();
+        else if (!m_muteButton.IsActive) m_muteButton.ChangeActiveState();
 
         m_mixerGroup.audioMixer.SetFloat(m_parameterName.ToString(), Mathf.Log10(value) * 20);
     }

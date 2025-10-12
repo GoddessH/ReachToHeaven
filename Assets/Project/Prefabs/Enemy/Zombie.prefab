@@ -475,7 +475,7 @@ MonoBehaviour:
   - Type: 1
     Value: 11
   - Type: 5
-    Value: 0.5
+    Value: 1.5
   CheckStateDict: 0
 --- !u!1 &2536237222124769759
 GameObject:

@@ -5,6 +5,8 @@ public class SettingPanel : MonoBehaviour
 {
     //
     [SerializeField] private GameObject m_homeButton;
+    [SerializeField] private GraphicManager m_graphicManager;
+    [SerializeField] private ButtonToggle m_statLogToggle;
 
     private GameObject m_previousPanel;
     private bool m_canCursorPlaySFX;
@@ -12,6 +14,9 @@ public class SettingPanel : MonoBehaviour
 
     private Action m_onEnableInput;
     private Action m_onDisableInput;
+
+    public GraphicManager GraphicManager { get => m_graphicManager; }
+    public ButtonToggle StatLogToggle { get => m_statLogToggle; }
 
     public void SetSceneLayout(GameObject previousPanel, bool canCursorPlaySFX, bool isHomeButtonAllowed)
     {

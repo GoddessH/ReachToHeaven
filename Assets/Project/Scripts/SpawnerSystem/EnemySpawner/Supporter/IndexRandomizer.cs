@@ -10,7 +10,5 @@ public class IndexRandomizer
     }
 
     public int GetRandomIndex()
-    {
-        return Random.Range(0, m_totalPrefab);
-    }
+        => Random.Range(0, m_totalPrefab);
 }

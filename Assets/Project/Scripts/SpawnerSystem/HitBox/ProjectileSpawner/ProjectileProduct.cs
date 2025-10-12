@@ -9,6 +9,8 @@ public class ProjectileProduct : DamageSource
     private Rigidbody2D m_projectileRigid;
     private Collider2D m_projectileCollider;
 
+    private bool m_isReleased;
+
     public Rigidbody2D ProjectileRigid { get => m_projectileRigid; }
 
     public void SetData(HitBoxData data)
@@ -23,8 +25,16 @@ public class ProjectileProduct : DamageSource
         m_projectileCollider = GetComponent<Collider2D>();
     }
 
+    protected override void OnEnable()
+    {
+        base.OnEnable();
+        m_isReleased = false;
+    }
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        if (m_isReleased) return;
+
         if (collision.gameObject.CompareTag(m_targetTag.ToString()))
         {
             DoDamage(collision);
@@ -33,12 +43,8 @@ public class ProjectileProduct : DamageSource
             //Debug.Log(m_piercing);
             if (m_piercing <= 0)
             {
-                if (m_piercing == 0) m_pool.Release(this);
-                else
-                {
-                    Physics2D.IgnoreCollision(m_projectileCollider, collision);
-                    m_pool.Release(this);
-                }
+                m_isReleased = true;
+                m_pool.Release(this);
             }
         }
     }

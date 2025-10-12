@@ -1,9 +1,11 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public class DecorationSpawner : Spawner
 {
     //
     [SerializeField] private int m_totalCount;
+    [SerializeField] private List<int> m_indexArray = new List<int>();
     [SerializeField] private PositionRandomizer m_positionRandomizer = new PositionRandomizer();
     [SerializeField] private IndexRandomizer m_indexRandomizer = new IndexRandomizer();
 

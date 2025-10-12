@@ -15,7 +15,7 @@ MonoBehaviour:
   UpgradeStatUIData:
     Title: Health
     Icon: {fileID: 21300000, guid: a2563f2b8dbc4044b9a50537d3a29962, type: 3}
-    Description: Increase maximum health by 1% per level
+    Description: Increase maximum health by 10% per level
   UpgradeStatSystemData:
     Type: 6
     Value: 10

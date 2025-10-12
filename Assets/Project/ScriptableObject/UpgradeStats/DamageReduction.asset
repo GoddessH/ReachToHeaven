@@ -15,7 +15,7 @@ MonoBehaviour:
   UpgradeStatUIData:
     Title: Damage Reduction
     Icon: {fileID: 21300000, guid: f6b8b85cbdc82ce439a41ae3d56d57ee, type: 3}
-    Description: Reduce 5% incoming damage per level
+    Description: Reduce 1% incoming damage per level
   UpgradeStatSystemData:
     Type: 8
     Value: 1

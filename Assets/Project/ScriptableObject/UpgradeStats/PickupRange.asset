@@ -15,7 +15,7 @@ MonoBehaviour:
   UpgradeStatUIData:
     Title: Pickup Range
     Icon: {fileID: 21300000, guid: eed44235dcbd621438f7c0c4f05e2356, type: 3}
-    Description: Increase pickup range by 5% per level
+    Description: Increase pickup range by 0,1 unit per level
   UpgradeStatSystemData:
     Type: 9
     Value: 0.1

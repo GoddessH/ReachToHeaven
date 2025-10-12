@@ -15,7 +15,7 @@ MonoBehaviour:
   UpgradeStatUIData:
     Title: Attack Countdown
     Icon: {fileID: 21300000, guid: 08c71e4e0565fe4469d1e0a593047156, type: 3}
-    Description: Reduce 5% countdown time per level
+    Description: Reduce 2% countdown time per level
   UpgradeStatSystemData:
     Type: 0
     Value: -2

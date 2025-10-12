@@ -532,7 +532,7 @@ MonoBehaviour:
   m_walkSFX: {fileID: 8300000, guid: 44baa1699d3025b4d975987837b8204a, type: 3}
   m_runSFX: {fileID: 0}
   m_runScale: 0.4
-  m_extraMovementSpeed: 0.5
+  m_extraMovementSpeed: 1
 --- !u!114 &7951478688047574104
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -599,7 +599,7 @@ MonoBehaviour:
   - Type: 1
     Value: 20
   - Type: 5
-    Value: 0.5
+    Value: 1.5
   CheckStateDict: 0
 --- !u!1 &4574489518319829750
 GameObject:

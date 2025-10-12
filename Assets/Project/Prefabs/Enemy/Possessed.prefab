@@ -612,7 +612,7 @@ MonoBehaviour:
   - Type: 1
     Value: 30
   - Type: 5
-    Value: 1.2
+    Value: 2
   CheckStateDict: 0
 --- !u!1 &4564051737220093404
 GameObject:
